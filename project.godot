@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Slime Ventures"
 run/main_scene="res://Src/Scenes/debug_map.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://Resources/PlaceHolderSprites/icon.svg"
 
 [display]
@@ -20,6 +20,8 @@ config/icon="res://Resources/PlaceHolderSprites/icon.svg"
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/resizable=false
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"

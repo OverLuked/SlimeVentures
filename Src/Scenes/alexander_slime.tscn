@@ -1,5 +1,36 @@
-[gd_scene format=3 uid="uid://d266axbe8wcg8"]
+[gd_scene load_steps=6 format=3 uid="uid://d266axbe8wcg8"]
 
-[node name="AlexanderSlime" type="CharacterBody2D"]
+[ext_resource type="Texture2D" uid="uid://txpr03ga1jnq" path="res://Resources/PlaceHolderSprites/icon.svg" id="1_fkd6h"]
+[ext_resource type="Script" path="res://Src/Scripts/alexander_slime.cs" id="1_w0ttc"]
+[ext_resource type="PackedScene" uid="uid://bam1e1oxrjucs" path="res://Src/Scenes/player_controller.tscn" id="2_5355a"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8a3o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fkd6h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2hq0"]
+size = Vector2(16, 17)
+
+[node name="AlexanderSlime" type="CharacterBody2D" node_paths=PackedStringArray("_controller")]
+script = ExtResource("1_w0ttc")
+_controller = NodePath("PlayerController")
+
+[node name="PlayerController" parent="." instance=ExtResource("2_5355a")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.140625, 0.144531)
+sprite_frames = SubResource("SpriteFrames_m8a3o")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t2hq0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)
+zoom = Vector2(2, 2)

@@ -15,7 +15,6 @@ Vampire Survivors-ish game but worse!
 		GLOBAL STATS
 	*-------------/////-------------*
 	DEBUG MAP
-		DEBUGGER LOG ON UPPER RIGHT (Player Status)
 		PLACE SPAWNERS (FOR MOBS)
 		GUI 
 		SCORE GUI

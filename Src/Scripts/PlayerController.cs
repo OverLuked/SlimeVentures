@@ -83,4 +83,18 @@ public partial class PlayerController : Node
 		
 		_player.MoveAndSlide();
 	}
+
+	public override void _Input(InputEvent @event)
+	{
+		if (@event.IsActionPressed("Dash"))
+		{
+			Dash();
+		}
+	}
+
+	// TODO: DASHES
+	private void Dash()
+	{
+		GD.Print("Player Dashed");
+	}
 }

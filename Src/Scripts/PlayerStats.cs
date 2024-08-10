@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace SlimeVentures.Scripts;
 
 public partial class PlayerStats : Node
 {

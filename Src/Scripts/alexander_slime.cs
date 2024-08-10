@@ -6,7 +6,6 @@ public partial class alexander_slime : CharacterBody2D
     [Export] private PlayerController _controller;
     [Export] private AnimatedSprite2D _anims;
     [Export] private Logs _logs;
-    
     [Export] private float _health = 3.5f;
     [Export] private float _speed = 25.0f;
     [Export] private float _attackSpeed = 1.0f;
@@ -26,6 +25,6 @@ public partial class alexander_slime : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        _direction = GetGlobalMousePosition().AngleToPoint(this.Position);
+        _direction = GetGlobalMousePosition().AngleToPoint(Position);
     }
 }

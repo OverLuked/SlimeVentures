@@ -16,7 +16,7 @@ public partial class PlayerController : Node
 
 	private CharacterBody2D _player;
 	private AnimatedSprite2D _anims;
-	private PlayerStats _stats;
+	private SlimeVentures.Scripts.PlayerStats _stats;
 
 
 
@@ -36,7 +36,7 @@ public partial class PlayerController : Node
 		_anims = anims;
 	}
 
-	public PlayerStats GetStats ()
+	public SlimeVentures.Scripts.PlayerStats GetStats ()
 	{
 		_stats.SetStats(_health, _damage, _dashN, _maxDash);
 		return _stats;
@@ -45,7 +45,7 @@ public partial class PlayerController : Node
 	
 	public override void _Ready()
 	{
-		_stats = new PlayerStats();
+		_stats = new SlimeVentures.Scripts.PlayerStats();
 		GD.Print("Controller Ready");
 	}
 	

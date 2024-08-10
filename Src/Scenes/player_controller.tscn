@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://Src/Scripts/PlayerController.cs" id="1_2vq5m"]
 
-[node name="PlayerController" type="Node" node_paths=PackedStringArray("_stats")]
+[node name="PlayerController" type="Node"]
 script = ExtResource("1_2vq5m")
-_stats = NodePath("")
 
 [node name="EventBus" type="Node" parent="."]

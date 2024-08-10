@@ -1,36 +1,193 @@
-[gd_scene load_steps=6 format=3 uid="uid://d266axbe8wcg8"]
+[gd_scene load_steps=26 format=3 uid="uid://d266axbe8wcg8"]
 
-[ext_resource type="Texture2D" uid="uid://txpr03ga1jnq" path="res://Resources/PlaceHolderSprites/icon.svg" id="1_fkd6h"]
 [ext_resource type="Script" path="res://Src/Scripts/alexander_slime.cs" id="1_w0ttc"]
 [ext_resource type="PackedScene" uid="uid://bam1e1oxrjucs" path="res://Src/Scenes/player_controller.tscn" id="2_5355a"]
+[ext_resource type="Texture2D" uid="uid://cc3dumvb08wsd" path="res://Resources/PlayerSprites/Goon_Anims.png" id="3_v1nfl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rpxo"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kli06"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y147p"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6mec"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6xfq"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk2yr"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wy54"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clk7e"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhend"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udd1o"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wj8o"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw7ca"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm0m4"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u645g"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiqdk"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxqfe"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fygsv"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48cg6"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fykol"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r43bv"]
+atlas = ExtResource("3_v1nfl")
+region = Rect2(64, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m8a3o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fkd6h")
+"texture": SubResource("AtlasTexture_8rpxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kli06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y147p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6mec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6xfq")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"WalkDown",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk2yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wy54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clk7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhend")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udd1o")
+}],
+"loop": true,
+"name": &"WalkLeft",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wj8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw7ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm0m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u645g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiqdk")
+}],
+"loop": true,
+"name": &"WalkRight",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxqfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fygsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48cg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fykol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r43bv")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2hq0"]
-size = Vector2(16, 17)
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0pm8"]
+radius = 5.02494
 
-[node name="AlexanderSlime" type="CharacterBody2D" node_paths=PackedStringArray("_controller")]
+[node name="AlexanderSlime" type="CharacterBody2D" node_paths=PackedStringArray("_controller", "_anims")]
 script = ExtResource("1_w0ttc")
 _controller = NodePath("PlayerController")
+_anims = NodePath("AnimatedSprite2D")
 
 [node name="PlayerController" parent="." instance=ExtResource("2_5355a")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.140625, 0.144531)
+position = Vector2(0, -2)
+scale = Vector2(0.973, 1)
 sprite_frames = SubResource("SpriteFrames_m8a3o")
+animation = &"WalkUp"
+
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 2)
+scale = Vector2(1.02775, 1)
+zoom = Vector2(2, 2)
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_t2hq0")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1, 0)
-zoom = Vector2(2, 2)
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_x0pm8")

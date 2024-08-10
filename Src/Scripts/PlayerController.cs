@@ -16,8 +16,8 @@ public partial class PlayerController : Node
 
 	private CharacterBody2D _player;
 	private AnimatedSprite2D _anims;
+	private PlayerStats _stats;
 
-	[Export] private PlayerStats _stats;
 
 
 	public void SetStats(float health, float speed, float attackSpeed, float bulletSpeed, float damage, 
@@ -34,14 +34,19 @@ public partial class PlayerController : Node
 		_maxDash = maxDash;
 		_player = player;
 		_anims = anims;
-		
+	}
+
+	public PlayerStats GetStats ()
+	{
 		_stats.SetStats(_health, _damage, _dashN, _maxDash);
+		return _stats;
+		
 	}
 	
 	public override void _Ready()
 	{
-		GD.Print("Player Controller is Ready!");
-		GD.Print("Player Animations Ready");
+		_stats = new PlayerStats();
+		GD.Print("Controller Ready");
 	}
 	
 	public override void _Process(double delta)

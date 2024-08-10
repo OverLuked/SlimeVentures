@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://d266axbe8wcg8"]
+[gd_scene load_steps=28 format=3 uid="uid://d266axbe8wcg8"]
 
 [ext_resource type="Script" path="res://Src/Scripts/alexander_slime.cs" id="1_w0ttc"]
 [ext_resource type="PackedScene" uid="uid://bam1e1oxrjucs" path="res://Src/Scenes/player_controller.tscn" id="2_5355a"]
 [ext_resource type="Texture2D" uid="uid://cc3dumvb08wsd" path="res://Resources/PlayerSprites/Goon_Anims.png" id="3_v1nfl"]
+[ext_resource type="Script" path="res://Src/Scripts/Logs.cs" id="4_gfu64"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rpxo"]
 atlas = ExtResource("3_v1nfl")
@@ -167,13 +168,22 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_0lvd7"]
+line_spacing = 1.5
+font_size = 5
+font_color = Color(1, 1, 0.2, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_x0pm8"]
 radius = 5.02494
 
-[node name="AlexanderSlime" type="CharacterBody2D" node_paths=PackedStringArray("_controller", "_anims")]
+[node name="AlexanderSlime" type="CharacterBody2D" node_paths=PackedStringArray("_controller", "_anims", "_logs")]
 script = ExtResource("1_w0ttc")
 _controller = NodePath("PlayerController")
 _anims = NodePath("AnimatedSprite2D")
+_logs = NodePath("AnimatedSprite2D/Camera2D/Logs")
 
 [node name="PlayerController" parent="." instance=ExtResource("2_5355a")]
 
@@ -187,6 +197,19 @@ animation = &"WalkUp"
 position = Vector2(0, 2)
 scale = Vector2(1.02775, 1)
 zoom = Vector2(2, 2)
+
+[node name="Logs" type="Label" parent="AnimatedSprite2D/Camera2D" node_paths=PackedStringArray("_controller")]
+offset_left = -158.0
+offset_top = -90.0
+offset_right = -112.0
+offset_bottom = -27.0
+text = "Hello World
+"
+label_settings = SubResource("LabelSettings_0lvd7")
+autowrap_mode = 3
+clip_text = true
+script = ExtResource("4_gfu64")
+_controller = NodePath("../../../PlayerController")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

@@ -4,19 +4,19 @@ using System;
 public partial class PlayerStats : Node
 {
     // REQUIRED FOR LOGIC
-    private float _health;
-    private float _damage;
+    public float Health;
+    public float Damage;
     
     // DEBUG REFERENCES
-    private int _dashCount;
-    private int _maxDash;
+    public int DashCount;
+    public int MaxDash;
 
     public void SetStats(float health, float damage, int dashN, int dashJ)
     {
-        _health = health;
-        _damage = damage;
-        _dashCount = dashN;
-        _maxDash = dashJ;
+        Health = health;
+        Damage = damage;
+        DashCount = dashN;
+        MaxDash = dashJ;
     }
 
     public override void _Ready()

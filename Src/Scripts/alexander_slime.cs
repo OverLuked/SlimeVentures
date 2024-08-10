@@ -5,6 +5,7 @@ public partial class alexander_slime : CharacterBody2D
 {
     [Export] private PlayerController _controller;
     [Export] private AnimatedSprite2D _anims;
+    [Export] private Logs _logs;
     
     [Export] private float _health = 3.5f;
     [Export] private float _speed = 25.0f;

@@ -1,13 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bam1e1oxrjucs"]
+[gd_scene load_steps=2 format=3 uid="uid://bam1e1oxrjucs"]
 
 [ext_resource type="Script" path="res://Src/Scripts/PlayerController.cs" id="1_2vq5m"]
-[ext_resource type="Script" path="res://Src/Scripts/PlayerStats.cs" id="2_b8m06"]
 
 [node name="PlayerController" type="Node" node_paths=PackedStringArray("_stats")]
 script = ExtResource("1_2vq5m")
-_stats = NodePath("PlayerStats")
+_stats = NodePath("")
 
 [node name="EventBus" type="Node" parent="."]
-
-[node name="PlayerStats" type="Node" parent="."]
-script = ExtResource("2_b8m06")

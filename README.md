@@ -6,7 +6,6 @@ Vampire Survivors-ish game but worse!
 		PROJECTILE
 		DASH
 		RADDIAL PROJECTILE
-		GLOBAL STATS
 	*-------------/////-------------*
 	FIRST MOB
 		MOB PHYSICS

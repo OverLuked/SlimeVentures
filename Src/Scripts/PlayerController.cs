@@ -10,13 +10,15 @@ public partial class PlayerController : Node
 	private float _damage;
 	private int _dashN;
 	private int _maxDash;
-
 	private Vector2 _direction;
 	private Vector2 _velocity;
+	private double _angle;
+
 	private CharacterBody2D _player;
 	private AnimatedSprite2D _anims;
-	private double _angle;
-	
+
+	[Export] private PlayerStats _stats;
+
 
 	public void SetStats(float health, float speed, float attackSpeed, float bulletSpeed, float damage, 
 		int n, int maxDash, CharacterBody2D player, AnimatedSprite2D anims)
@@ -32,6 +34,8 @@ public partial class PlayerController : Node
 		_maxDash = maxDash;
 		_player = player;
 		_anims = anims;
+		
+		_stats.SetStats(_health, _damage, _dashN, _maxDash);
 	}
 	
 	public override void _Ready()

@@ -15,6 +15,10 @@ run/main_scene="res://Src/Scenes/debug_map.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://Resources/PlaceHolderSprites/icon.svg"
 
+[autoload]
+
+PlayerStats="*res://Src/Scripts/PlayerStats.cs"
+
 [display]
 
 window/size/viewport_width=640

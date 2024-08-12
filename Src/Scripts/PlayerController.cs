@@ -1,51 +1,28 @@
 using Godot;
 using System;
+using SlimeVentures.Scripts;
 
 public partial class PlayerController : Node
 {
-	private float _health;
-	private float _speed;
-	private float _attackSpeed;
-	private float _bulletSpeed;
-	private float _damage;
-	private int _dashN;
-	private int _maxDash;
+	[Export] private EventBus _event;
+	private CharacterBody2D _player;
+	private AnimatedSprite2D _anims;
+
 	private Vector2 _direction;
 	private Vector2 _velocity;
 	private double _angle;
 
-	private CharacterBody2D _player;
-	private AnimatedSprite2D _anims;
-	private SlimeVentures.Scripts.PlayerStats _stats;
 
-
-
-	public void SetStats(float health, float speed, float attackSpeed, float bulletSpeed, float damage, 
-		int n, int maxDash, CharacterBody2D player, AnimatedSprite2D anims)
+	public void SetPlayer(CharacterBody2D player, AnimatedSprite2D anims)
 	{
 		// SET UP PLAYER STATS 
 		// TODO: MAKE GLOBAL PLAYER STATS FOR GAME LOGIC
-		_health = health;
-		_speed = speed;
-		_attackSpeed = attackSpeed;
-		_bulletSpeed = bulletSpeed;
-		_damage = damage;
-		_dashN = n;
-		_maxDash = maxDash;
 		_player = player;
 		_anims = anims;
-	}
-
-	public SlimeVentures.Scripts.PlayerStats GetStats ()
-	{
-		_stats.SetStats(_health, _damage, _dashN, _maxDash);
-		return _stats;
-		
 	}
 	
 	public override void _Ready()
 	{
-		_stats = new SlimeVentures.Scripts.PlayerStats();
 		GD.Print("Controller Ready");
 	}
 	
@@ -59,7 +36,7 @@ public partial class PlayerController : Node
 
 		_velocity = _direction.LimitLength();
 		_player.Velocity = _velocity != Vector2.Zero
-			? _player.Velocity.Lerp(_velocity * _speed * 2, 0.35f)
+			? _player.Velocity.Lerp(_velocity * PlayerStats.Speed * 2, 0.35f)
 			: _player.Velocity.Lerp(Vector2.Zero, 0.5f);
 		
 		// PLAYER ANIMATIONS
@@ -83,18 +60,20 @@ public partial class PlayerController : Node
 		
 		_player.MoveAndSlide();
 	}
-
-	public override void _Input(InputEvent @event)
-	{
-		if (@event.IsActionPressed("Dash"))
-		{
-			Dash();
-		}
-	}
-
+	
 	// TODO: DASHES
-	private void Dash()
+	public void Dash()
 	{
 		GD.Print("Player Dashed");
+		PlayerStats.DashCount -= 1;
+	}
+
+	public String UpdateLogs()
+	{
+		String log = "Health: " + PlayerStats.Health
+		                        + "\nDamage: " + PlayerStats.Damage
+		                        + "\nDashes: " + PlayerStats.DashCount
+		                        + "\nMax Dash: " + PlayerStats.MaxDash;
+		return log;
 	}
 }

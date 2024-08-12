@@ -1,10 +1,12 @@
 using Godot;
 using System;
+using SlimeVentures.Scripts;
 
 public partial class alexander_slime : CharacterBody2D
 {
     [Export] private PlayerController _controller;
     [Export] private AnimatedSprite2D _anims;
+    [Export] private LinearProjectileMarker _linearMarker;
     [Export] private Logs _logs;
     [Export] private float _health = 3.5f;
     [Export] private float _speed = 25.0f;
@@ -20,7 +22,8 @@ public partial class alexander_slime : CharacterBody2D
     public override void _Ready()
     {
         GD.Print("PLAYER READY");
-        _controller.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashN, _maxDash, this, _anims);
+        PlayerStats.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashN, _maxDash);
+        _controller.SetPlayer(this, _anims);
     }
 
     public override void _Process(double delta)

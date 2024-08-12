@@ -8,10 +8,14 @@ public partial class PlayerController : Node
 	private CharacterBody2D _player;
 	private AnimatedSprite2D _anims;
 	private Marker2D _linearMarker;
+	private PackedScene _linearBullet;
 
 	private Vector2 _direction;
 	private Vector2 _velocity;
 	private double _angle;
+	
+	//DEBUG REFERENCES
+	public Boolean BulletReady;
 
 
 	public void SetPlayer(CharacterBody2D player, AnimatedSprite2D anims, Marker2D marker)
@@ -25,6 +29,7 @@ public partial class PlayerController : Node
 	
 	public override void _Ready()
 	{
+		_linearBullet = GD.Load<PackedScene>("res://Src/Scenes/slime_ball.tscn");
 		GD.Print("Controller Ready");
 	}
 	
@@ -62,8 +67,14 @@ public partial class PlayerController : Node
 
 		if (_event.BulletReady(delta))
 		{
-			GD.Print("SHOOTING");
+			var bullet = (SlimeBall)_linearBullet.Instantiate();
+			_player.AddChild(bullet);
+			bullet.Direction = Vector2.Right.Rotated(_player.Position.AngleToPoint(_player.GetGlobalMousePosition()));
+			bullet.LookAt(_player.GetGlobalMousePosition());
+			bullet.SpawnLoc = _linearMarker.Position;
+			BulletReady = true;
 		}
+		else BulletReady = false;
 		
 		_player.MoveAndSlide();
 	}

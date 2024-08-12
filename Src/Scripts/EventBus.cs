@@ -13,7 +13,7 @@ public partial class EventBus : Node
 
 	public override void _Ready()
 	{
-		GD.Print("EVENT BUS READY");
+		GD.Print("Event bus ready");
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -24,7 +24,7 @@ public partial class EventBus : Node
 			if (_isDashAvailable)
 			{
 				_controller.Dash();
-			} else GD.Print("DASH ON COOLDOWN");
+			} else GD.Print("Dash on cooldown");
 		}
 	}
 	

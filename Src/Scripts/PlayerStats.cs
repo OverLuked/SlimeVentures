@@ -27,6 +27,6 @@ public partial class PlayerStats : Node
 
     public override void _Ready()
     {
-        GD.Print("PLAYER STATS READY");
+        GD.Print("Player ready");
     }
 }

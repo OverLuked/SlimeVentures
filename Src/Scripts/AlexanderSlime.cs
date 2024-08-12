@@ -21,7 +21,7 @@ public partial class AlexanderSlime : CharacterBody2D
     
 	public override void _Ready()
 	{
-		GD.Print("PLAYER READY");
+		GD.Print("Player ready");
 		PlayerStats.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashN, _maxDash);
 		_controller.SetPlayer(this, _anims, _linearMarker);
 	}

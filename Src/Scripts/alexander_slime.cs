@@ -23,11 +23,6 @@ public partial class alexander_slime : CharacterBody2D
     {
         GD.Print("PLAYER READY");
         PlayerStats.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashN, _maxDash);
-        _controller.SetPlayer(this, _anims);
-    }
-
-    public override void _Process(double delta)
-    {
-        _direction = GetGlobalMousePosition().AngleToPoint(Position);
+        _controller.SetPlayer(this, _anims, _linearMarker);
     }
 }

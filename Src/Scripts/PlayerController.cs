@@ -7,18 +7,20 @@ public partial class PlayerController : Node
 	[Export] private EventBus _event;
 	private CharacterBody2D _player;
 	private AnimatedSprite2D _anims;
+	private Marker2D _linearMarker;
 
 	private Vector2 _direction;
 	private Vector2 _velocity;
 	private double _angle;
 
 
-	public void SetPlayer(CharacterBody2D player, AnimatedSprite2D anims)
+	public void SetPlayer(CharacterBody2D player, AnimatedSprite2D anims, Marker2D marker)
 	{
 		// SET UP PLAYER STATS 
 		// TODO: MAKE GLOBAL PLAYER STATS FOR GAME LOGIC
 		_player = player;
 		_anims = anims;
+		_linearMarker = marker;
 	}
 	
 	public override void _Ready()
@@ -57,6 +59,11 @@ public partial class PlayerController : Node
 				_anims.Play("WalkDown");
 				break;
 		}
+
+		if (_event.BulletReady(delta))
+		{
+			GD.Print("SHOOTING");
+		}
 		
 		_player.MoveAndSlide();
 	}
@@ -76,4 +83,5 @@ public partial class PlayerController : Node
 		                        + "\nMax Dash: " + PlayerStats.MaxDash;
 		return log;
 	}
+	
 }

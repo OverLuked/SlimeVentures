@@ -3,7 +3,6 @@
 Vampire Survivors-ish game but worse!
 ## TODO: 
 	PLAYER
-		PROJECTILE
 		DASH
 		RADDIAL PROJECTILE
 	*-------------/////-------------*
@@ -13,6 +12,7 @@ Vampire Survivors-ish game but worse!
 		GROUP MOBS
 		RANDOM SPAWNS @ INTERVAL	
 		GLOBAL STATS
+		MOB DROPS
 	*-------------/////-------------*
 	DEBUG MAP
 		PLACE SPAWNERS (FOR MOBS)

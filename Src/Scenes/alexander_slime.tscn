@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://d266axbe8wcg8"]
 
-[ext_resource type="Script" path="res://Src/Scripts/alexander_slime.cs" id="1_w0ttc"]
+[ext_resource type="Script" path="res://Src/Scripts/AlexanderSlime.cs" id="1_fmjdo"]
 [ext_resource type="PackedScene" uid="uid://bam1e1oxrjucs" path="res://Src/Scenes/player_controller.tscn" id="2_5355a"]
 [ext_resource type="Texture2D" uid="uid://cc3dumvb08wsd" path="res://Resources/PlayerSprites/Goon_Anims.png" id="3_v1nfl"]
 [ext_resource type="Script" path="res://Src/Scripts/Logs.cs" id="4_gfu64"]
@@ -181,7 +181,9 @@ shadow_size = 0
 radius = 5.02494
 
 [node name="AlexanderSlime" type="CharacterBody2D" node_paths=PackedStringArray("_controller", "_anims", "_linearMarker", "_logs")]
-script = ExtResource("1_w0ttc")
+disable_mode = 2
+motion_mode = 1
+script = ExtResource("1_fmjdo")
 _controller = NodePath("PlayerController")
 _anims = NodePath("AnimatedSprite2D")
 _linearMarker = NodePath("LinearProjectileMarker")

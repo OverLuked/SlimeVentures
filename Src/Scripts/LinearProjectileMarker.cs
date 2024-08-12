@@ -3,7 +3,7 @@ using System;
 
 public partial class LinearProjectileMarker : Marker2D
 {
-	[Export] private alexander_slime _player;
+	[Export] private AlexanderSlime _player;
 
 	private float _direction;
 	// Called when the node enters the scene tree for the first time.
@@ -11,7 +11,7 @@ public partial class LinearProjectileMarker : Marker2D
 	{
         GD.Print("Linear Marker Ready!");
 	}
-
+	
 	public override void _Draw()
 	{
 		DrawCircle(Position, 1, Colors.Black);

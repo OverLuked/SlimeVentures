@@ -25,4 +25,9 @@ public partial class alexander_slime : CharacterBody2D
         PlayerStats.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashN, _maxDash);
         _controller.SetPlayer(this, _anims, _linearMarker);
     }
+
+    public override void _Process(double delta)
+    {
+        _logs.BulletReady = _controller.BulletReady;
+    }
 }

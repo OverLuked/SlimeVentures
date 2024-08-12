@@ -4,6 +4,7 @@ using SlimeVentures.Scripts;
 
 public partial class Logs : Label
 {
+	public Boolean BulletReady;
 	 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -16,6 +17,7 @@ public partial class Logs : Label
 		Text = "Health: " + PlayerStats.Health
 		                  + "\nDamage: " + PlayerStats.Damage
 		                  + "\nDashes: " + PlayerStats.DashCount
-		                  + "\nMax Dash: " + PlayerStats.MaxDash;
+		                  + "\nMax Dash: " + PlayerStats.MaxDash
+		                  + "\nBullet Ready:" + BulletReady;
 	}
 }

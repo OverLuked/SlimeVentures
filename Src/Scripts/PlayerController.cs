@@ -12,23 +12,27 @@ public partial class PlayerController : Node
 
 	private Vector2 _direction;
 	private Vector2 _velocity;
+	private float _initSpeed;
+	private double _dashTime;
 	private double _angle;
 	private double _time;
-
-	public Boolean IsDashAvailable;
+	private double _bulletCD = 1;
+	private double _bulletCoolTime;
 
 	//DEBUG REFERENCES
+	public Boolean Dashed;
 	public float DashCoolTime;
-	public Boolean BulletReady;
+	public Boolean IsBulletReady;
 
 
-	public void SetPlayer(CharacterBody2D player, AnimatedSprite2D anims, Marker2D marker)
+	public void SetPlayer(CharacterBody2D player, AnimatedSprite2D anims, Marker2D marker, float initSpeed)
 	{
 		// SET UP PLAYER STATS 
 		// TODO: MAKE GLOBAL PLAYER STATS FOR GAME LOGIC
 		_player = player;
 		_anims = anims;
 		_linearMarker = marker;
+		_initSpeed = initSpeed;
 	}
 	
 	public override void _Ready()
@@ -39,9 +43,16 @@ public partial class PlayerController : Node
 	
 	public override void _Process(double delta)
 	{
-		// COOLDOWN TIMER
+		// Dash Logic
 		_time = delta;
-		IsDashAvailable = DashReady(delta);
+		if (Dashed && DashReady())
+		{
+			PlayerStats.DashCount -= 1;
+			_dashTime += _time;
+			Dash();
+		}
+		if ( Dashed && _dashTime > 0.0167) ReturnFromDash();
+		if (PlayerStats.DashCount >= 0 && PlayerStats.DashCount < PlayerStats.MaxDash) DashCooldown();
 		// PLAYER MOVEMENT
 		_direction = new Vector2(
 			Input.GetActionStrength("Right") - Input.GetActionStrength("left"),
@@ -72,64 +83,53 @@ public partial class PlayerController : Node
 				break;
 		}
 		// BULLET
-		if (_event.BulletReady(delta))
+		if (BulletReady(delta))
 		{
 			var bullet = (SlimeBall)_linearBullet.Instantiate();
 			_player.AddChild(bullet);
 			bullet.Direction = Vector2.Right.Rotated(_player.Position.AngleToPoint(_player.GetGlobalMousePosition()));
 			bullet.LookAt(_player.GetGlobalMousePosition());
 			bullet.SpawnLoc = _linearMarker.Position;
-			BulletReady = true;
+			IsBulletReady = true;
 		}
-		else BulletReady = false;
+		else IsBulletReady = false;
 		
 		_player.MoveAndSlide();
 	}
-	
-	// TODO: DASHES
-	public void Dash()
+	// Bullet Cooldown
+	private Boolean BulletReady(double delta)
 	{
-		GD.Print("Player Dashed");
-		PlayerStats.DashCount -= 1;
-
-	}
-	// DASH
-	public Boolean DashReady(double delta)
-	{
-		IsDashAvailable = PlayerStats.DashCount > 0;
-		if (!IsDashAvailable)
-		{
-			DashCooldown(delta);
-			return false;
-		}
-
-		if (IsDashAvailable && PlayerStats.DashCount != PlayerStats.MaxDash)
-		{
-			DashCooldown(delta);
-			return true;
-		}
-
-		DashCoolTime = 0;
+		_bulletCoolTime += delta * PlayerStats.AttackSpeed;
+		if (_bulletCD >= _bulletCoolTime) return false;
+		_bulletCoolTime = 0;
 		return true;
 	}
-
-	private void DashCooldown(double delta)
+	// DASH
+	private void Dash()
 	{
-		DashCoolTime += (float) delta;
-		if (DashCoolTime > PlayerStats.DashCD)
-		{
-			PlayerStats.DashCount += 1;
-			DashCoolTime = 0;
-		}
+		GD.Print("Player Dashed");
+		PlayerStats.Speed = 1300;
+		GD.Print("Dashed Speed: " + PlayerStats.Speed);
+		GD.Print("Init Speed:" + _initSpeed);
 	}
-
-	public String UpdateLogs()
+	private void ReturnFromDash()
 	{
-		String log = "Health: " + PlayerStats.Health
-		                        + "\nDamage: " + PlayerStats.Damage
-		                        + "\nDashes: " + PlayerStats.DashCount
-		                        + "\nMax Dash: " + PlayerStats.MaxDash;
-		return log;
+		GD.Print("Dash Done");
+		PlayerStats.Speed = _initSpeed;
+		GD.Print("Init Speed: " + _initSpeed);
+		GD.Print("Current Speed: " + PlayerStats.Speed);
+		Dashed = false;
+		_dashTime = 0;
 	}
-	
+	private Boolean DashReady()
+	{
+		return PlayerStats.DashCount > 0;
+	}
+	private void DashCooldown()
+	{
+		DashCoolTime += (float) _time;
+		if (!(DashCoolTime > PlayerStats.DashCD)) return;
+		PlayerStats.DashCount += 1;
+		DashCoolTime = 0;
+	}
 }

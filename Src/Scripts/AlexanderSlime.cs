@@ -24,12 +24,12 @@ public partial class AlexanderSlime : CharacterBody2D
 	{
 		GD.Print("Player ready");
 		PlayerStats.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashCD, _dashN, _maxDash);
-		_controller.SetPlayer(this, _anims, _linearMarker);
+		_controller.SetPlayer(this, _anims, _linearMarker, _speed);
 	}
 
 	public override void _Process(double delta)
 	{
-		_logs.BulletReady = _controller.BulletReady;
+		_logs.BulletReady = _controller.IsBulletReady;
 		_logs.Cooldown = (double) _controller.DashCoolTime;
 	}
 }

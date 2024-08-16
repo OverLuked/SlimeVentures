@@ -3,7 +3,7 @@
 Vampire Survivors-ish game but worse!
 ## TODO: 
 	PLAYER
-		DASH
+		DASH (LOGIC NEEDED)
 		RADDIAL PROJECTILE
 	*-------------/////-------------*
 	FIRST MOB

@@ -13,6 +13,7 @@ public partial class AlexanderSlime : CharacterBody2D
 	[Export] private float _attackSpeed = 1.0f;
 	[Export] private float _bulletSpeed = 100.0f;
 	[Export] private float _damage = 1.0f;
+	[Export] private float _dashCD = 3;
 	[Export] private int _dashN = 1;
 	[Export] private int _maxDash = 3;
 
@@ -22,12 +23,13 @@ public partial class AlexanderSlime : CharacterBody2D
 	public override void _Ready()
 	{
 		GD.Print("Player ready");
-		PlayerStats.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashN, _maxDash);
+		PlayerStats.SetStats(_health, _speed, _attackSpeed, _bulletSpeed, _damage, _dashCD, _dashN, _maxDash);
 		_controller.SetPlayer(this, _anims, _linearMarker);
 	}
 
 	public override void _Process(double delta)
 	{
 		_logs.BulletReady = _controller.BulletReady;
+		_logs.Cooldown = (double) _controller.DashCoolTime;
 	}
 }

@@ -13,14 +13,14 @@ public partial class PlayerController : Node
 	private Vector2 _direction;
 	private Vector2 _velocity;
 	private float _initSpeed;
-	private double _dashTime;
 	private double _angle;
-	private double _time;
 	private double _bulletCD = 1;
 	private double _bulletCoolTime;
+	private double _dashFrame;
+
+	public Boolean Dashed;
 
 	//DEBUG REFERENCES
-	public Boolean Dashed;
 	public float DashCoolTime;
 	public Boolean IsBulletReady;
 
@@ -44,15 +44,20 @@ public partial class PlayerController : Node
 	public override void _Process(double delta)
 	{
 		// Dash Logic
-		_time = delta;
 		if (Dashed && DashReady())
 		{
-			PlayerStats.DashCount -= 1;
-			_dashTime += _time;
-			Dash();
+			GD.Print("Player Dashed");
+			_dashFrame += delta;
+			if (_dashFrame > 0.0167)
+			{
+				GD.Print("Player Stopped Dashing");
+				PlayerStats.Speed = _initSpeed;
+				_dashFrame = 0;
+				Dashed = false; 
+			}
 		}
-		if ( Dashed && _dashTime > 0.0167) ReturnFromDash();
 		if (PlayerStats.DashCount >= 0 && PlayerStats.DashCount < PlayerStats.MaxDash) DashCooldown();
+		
 		// PLAYER MOVEMENT
 		_direction = new Vector2(
 			Input.GetActionStrength("Right") - Input.GetActionStrength("left"),
@@ -104,30 +109,15 @@ public partial class PlayerController : Node
 		_bulletCoolTime = 0;
 		return true;
 	}
-	// DASH
-	private void Dash()
-	{
-		GD.Print("Player Dashed");
-		PlayerStats.Speed = 1300;
-		GD.Print("Dashed Speed: " + PlayerStats.Speed);
-		GD.Print("Init Speed:" + _initSpeed);
-	}
-	private void ReturnFromDash()
-	{
-		GD.Print("Dash Done");
-		PlayerStats.Speed = _initSpeed;
-		GD.Print("Init Speed: " + _initSpeed);
-		GD.Print("Current Speed: " + PlayerStats.Speed);
-		Dashed = false;
-		_dashTime = 0;
-	}
-	private Boolean DashReady()
+
+	public Boolean DashReady()
 	{
 		return PlayerStats.DashCount > 0;
 	}
+
 	private void DashCooldown()
 	{
-		DashCoolTime += (float) _time;
+		DashCoolTime += (float) GetProcessDeltaTime();
 		if (!(DashCoolTime > PlayerStats.DashCD)) return;
 		PlayerStats.DashCount += 1;
 		DashCoolTime = 0;

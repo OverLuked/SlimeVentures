@@ -5,6 +5,7 @@ Vampire Survivors-ish game but worse!
 	PLAYER
 		RADDIAL PROJECTILE
 	*-------------/////-------------*
+	*(PRIORITY)*
 	FIRST MOB
 		MOB PHYSICS
 		MOB CONTROLLER

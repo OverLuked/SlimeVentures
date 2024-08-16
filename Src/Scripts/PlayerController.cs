@@ -91,19 +91,19 @@ public partial class PlayerController : Node
 	{
 		GD.Print("Player Dashed");
 		PlayerStats.DashCount -= 1;
-		IsDashAvailable = PlayerStats.DashCount > 0;
 
 	}
 	// DASH
 	public Boolean DashReady(double delta)
 	{
+		IsDashAvailable = PlayerStats.DashCount > 0;
 		if (!IsDashAvailable)
 		{
 			DashCooldown(delta);
 			return false;
 		}
 
-		if (IsDashAvailable || PlayerStats.DashCount != PlayerStats.MaxDash)
+		if (IsDashAvailable && PlayerStats.DashCount != PlayerStats.MaxDash)
 		{
 			DashCooldown(delta);
 			return true;
@@ -116,7 +116,11 @@ public partial class PlayerController : Node
 	private void DashCooldown(double delta)
 	{
 		DashCoolTime += (float) delta;
-		PlayerStats.DashCount += DashCoolTime > PlayerStats.DashCD ? 1 : 0;
+		if (DashCoolTime > PlayerStats.DashCD)
+		{
+			PlayerStats.DashCount += 1;
+			DashCoolTime = 0;
+		}
 	}
 
 	public String UpdateLogs()

@@ -13,8 +13,12 @@ public partial class PlayerController : Node
 	private Vector2 _direction;
 	private Vector2 _velocity;
 	private double _angle;
-	
+	private double _time;
+
+	public Boolean IsDashAvailable;
+
 	//DEBUG REFERENCES
+	public float DashCoolTime;
 	public Boolean BulletReady;
 
 
@@ -35,6 +39,9 @@ public partial class PlayerController : Node
 	
 	public override void _Process(double delta)
 	{
+		// COOLDOWN TIMER
+		_time = delta;
+		IsDashAvailable = DashReady(delta);
 		// PLAYER MOVEMENT
 		_direction = new Vector2(
 			Input.GetActionStrength("Right") - Input.GetActionStrength("left"),
@@ -64,7 +71,7 @@ public partial class PlayerController : Node
 				_anims.Play("WalkDown");
 				break;
 		}
-
+		// BULLET
 		if (_event.BulletReady(delta))
 		{
 			var bullet = (SlimeBall)_linearBullet.Instantiate();
@@ -84,6 +91,32 @@ public partial class PlayerController : Node
 	{
 		GD.Print("Player Dashed");
 		PlayerStats.DashCount -= 1;
+		IsDashAvailable = PlayerStats.DashCount > 0;
+
+	}
+	// DASH
+	public Boolean DashReady(double delta)
+	{
+		if (!IsDashAvailable)
+		{
+			DashCooldown(delta);
+			return false;
+		}
+
+		if (IsDashAvailable || PlayerStats.DashCount != PlayerStats.MaxDash)
+		{
+			DashCooldown(delta);
+			return true;
+		}
+
+		DashCoolTime = 0;
+		return true;
+	}
+
+	private void DashCooldown(double delta)
+	{
+		DashCoolTime += (float) delta;
+		PlayerStats.DashCount += DashCoolTime > PlayerStats.DashCD ? 1 : 0;
 	}
 
 	public String UpdateLogs()

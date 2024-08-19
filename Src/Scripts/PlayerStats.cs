@@ -10,12 +10,12 @@ public partial class PlayerStats : Node
     public static float AttackSpeed ;
     public static float BulletSpeed;
     public static float Damage;
-    public static float DashCD;
+    public static int DashCD;
     public static int DashCount;
     public static int MaxDash;
 
     public static void SetStats(float health, float speed, float attackSpeed, float bulletSpeed, float damage, 
-        float dashCD, int n, int maxDash)
+        int dashCD, int n, int maxDash)
     {
         Health = health;
         Speed = speed;

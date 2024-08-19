@@ -22,7 +22,7 @@ public partial class PlayerController : Node
 	public Boolean Dashed;
 
 	//DEBUG REFERENCES
-	public float DashCoolTime;
+	public double DashCoolTime;
 	public Boolean IsBulletReady;
 
 
@@ -48,12 +48,13 @@ public partial class PlayerController : Node
 		if (!DashReady() || Dashed || Math.Abs(PlayerStats.DashCount - PlayerStats.MaxDash) > 0)
 		{
 			if(Dashed) ReturnFromDash(delta);
-
 			_dashCoolTime += delta;
-			if (_dashCoolTime > 3.0)
+			DashCoolTime = _dashCoolTime;
+			if (_dashCoolTime > PlayerStats.DashCD)
 			{
 				PlayerStats.DashCount += 1;
 				_dashCoolTime = 0;
+				DashCoolTime = _dashCoolTime;
 			}
 		}
 

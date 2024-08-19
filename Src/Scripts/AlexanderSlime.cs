@@ -13,7 +13,7 @@ public partial class AlexanderSlime : CharacterBody2D
 	[Export] private float _attackSpeed = 1.0f;
 	[Export] private float _bulletSpeed = 100.0f;
 	[Export] private float _damage = 1.0f;
-	[Export] private float _dashCD = 3;
+	[Export] private int _dashCD = 3;
 	[Export] private int _dashN = 1;
 	[Export] private int _maxDash = 3;
 
@@ -30,6 +30,6 @@ public partial class AlexanderSlime : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		_logs.BulletReady = _controller.IsBulletReady;
-		_logs.Cooldown = (double) _controller.DashCoolTime;
+		_logs.Cooldown = _controller.DashCoolTime;
 	}
 }

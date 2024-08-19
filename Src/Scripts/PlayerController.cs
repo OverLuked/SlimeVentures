@@ -16,6 +16,7 @@ public partial class PlayerController : Node
 	private double _angle;
 	private double _bulletCD = 1;
 	private double _bulletCoolTime;
+	private double _dashCoolTime;
 	private double _dashFrame;
 
 	public Boolean Dashed;
@@ -40,25 +41,23 @@ public partial class PlayerController : Node
 		_linearBullet = GD.Load<PackedScene>("res://Src/Scenes/slime_ball.tscn");
 		GD.Print("Controller Ready");
 	}
-	
-	public override void _Process(double delta)
+
+	public override void _PhysicsProcess(double delta)
 	{
 		// Dash Logic
-		if (Dashed && DashReady())
+		if (!DashReady() || Dashed || Math.Abs(PlayerStats.DashCount - PlayerStats.MaxDash) > 0)
 		{
-			GD.Print("Player Dashed");
-			_dashFrame += delta;
-			if (_dashFrame > 0.0167)
+			if(Dashed) ReturnFromDash(delta);
+
+			_dashCoolTime += delta;
+			if (_dashCoolTime > 3.0)
 			{
-				GD.Print("Player Stopped Dashing");
-				PlayerStats.Speed = _initSpeed;
-				_dashFrame = 0;
-				Dashed = false; 
+				PlayerStats.DashCount += 1;
+				_dashCoolTime = 0;
 			}
 		}
-		if (PlayerStats.DashCount >= 0 && PlayerStats.DashCount < PlayerStats.MaxDash) DashCooldown();
-		
-		// PLAYER MOVEMENT
+
+	// PLAYER MOVEMENT
 		_direction = new Vector2(
 			Input.GetActionStrength("Right") - Input.GetActionStrength("left"),
 			Input.GetActionStrength("Down") - Input.GetActionStrength("Up")
@@ -112,14 +111,15 @@ public partial class PlayerController : Node
 
 	public Boolean DashReady()
 	{
-		return PlayerStats.DashCount > 0;
+		return PlayerStats.DashCount > 0 && PlayerStats.DashCount <= PlayerStats.MaxDash;
 	}
 
-	private void DashCooldown()
+	private void ReturnFromDash(double delta)
 	{
-		DashCoolTime += (float) GetProcessDeltaTime();
-		if (!(DashCoolTime > PlayerStats.DashCD)) return;
-		PlayerStats.DashCount += 1;
-		DashCoolTime = 0;
+		_dashFrame += delta;
+		if (!(_dashFrame > 0.0167)) return;
+		PlayerStats.Speed = _initSpeed;
+		_dashFrame = 0.0;
+		Dashed = false;
 	}
 }

@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bi00x5lg08y8s"]
 
-[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/EnemyEventBus.cs" id="1_nig52"]
-[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/EnemyController.cs" id="2_pcs8y"]
-[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/SignalBus.cs" id="3_k5r1h"]
+[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/EnemyEventBus.cs" id="1_6qlp5"]
+[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/EnemyController.cs" id="2_j2lpk"]
+[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/SignalBus.cs" id="3_6eiao"]
 
 [node name="EnemyEventBus" type="Node"]
-script = ExtResource("1_nig52")
+script = ExtResource("1_6qlp5")
 
 [node name="EnemyController" type="Node" parent="."]
-script = ExtResource("2_pcs8y")
+script = ExtResource("2_j2lpk")
 
 [node name="SignalBus" type="Node" parent="."]
-script = ExtResource("3_k5r1h")
+script = ExtResource("3_6eiao")

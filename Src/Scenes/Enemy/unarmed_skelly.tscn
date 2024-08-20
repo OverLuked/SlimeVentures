@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp70efsakdjes"]
 
-[ext_resource type="Texture2D" uid="uid://fvw2825rxabe" path="res://Resources/MobSprites/UnarmedSkelly/SkellyT1DownIdle.png" id="1_kwt7u"]
+[ext_resource type="Texture2D" uid="uid://fvw2825rxabe" path="res://Resources/MobSprites/UnarmedSkelly/SkellyT1DownIdle.png" id="1_u5i1g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ogfiv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kwt7u")
+"texture": ExtResource("1_u5i1g")
 }],
 "loop": true,
 "name": &"default",

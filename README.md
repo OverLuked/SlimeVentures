@@ -25,3 +25,11 @@ Vampire Survivors-ish game but worse!
 		DAMAGE COUNTERS
 		HIT / GOT HIT SIGNALS
 	*-------------/////-------------*
+	
+
+## REMINDERS:
+	Global / Autoload Scripts
+	- PlayerStats
+	- EnemyStats
+	Note: Limit autoloadingg as much as possible
+	* ADD MORE IF NECESSARY *

@@ -18,6 +18,7 @@ config/icon="res://Resources/PlaceHolderSprites/icon.svg"
 [autoload]
 
 PlayerStats="*res://Src/Scripts/PlayerStats.cs"
+EnemyStats="*res://Src/Scripts/Enemy/EnemyStats.cs"
 
 [display]
 

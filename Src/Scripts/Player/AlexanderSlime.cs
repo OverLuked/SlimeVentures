@@ -1,4 +1,4 @@
-git using Godot;
+using Godot;
 using System;
 using SlimeVentures.Scripts;
 

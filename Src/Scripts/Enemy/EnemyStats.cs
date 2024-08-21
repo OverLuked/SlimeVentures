@@ -3,13 +3,14 @@ using System;
 
 public partial class EnemyStats : Node
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+	public static float Health;
+	public static float Speed;
+	public static float Damage;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public static void SetStats(float health, float speed, float damage)
 	{
+		Health = health;
+		Speed = speed;
+		Damage = damage;
 	}
 }

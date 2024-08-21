@@ -34,7 +34,7 @@ public partial class PlayerStats : Node
         GD.Print("Player ready");
     }
 
-    public CharacterBody2D GetPlayer()
+    public static CharacterBody2D GetPlayer()
     {
         return _player;
     }

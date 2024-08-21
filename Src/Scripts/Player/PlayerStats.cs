@@ -14,6 +14,8 @@ public partial class PlayerStats : Node
     public static int DashCount;
     public static int MaxDash;
 
+    private CharacterBody2D _player;
+
     public static void SetStats(float health, float speed, float attackSpeed, float bulletSpeed, float damage, 
         int dashCD, int n, int maxDash)
     {
@@ -30,5 +32,15 @@ public partial class PlayerStats : Node
     public override void _Ready()
     {
         GD.Print("Player ready");
+    }
+
+    public CharacterBody2D GetPlayer()
+    {
+        return _player;
+    }
+
+    public void SetPlayer(CharacterBody2D player)
+    {
+        _player = player;
     }
 }

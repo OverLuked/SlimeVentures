@@ -8,7 +8,6 @@ Vampire Survivors-ish game but worse!
 	*(PRIORITY)*
 	FIRST MOB
 		MOB PHYSICS
-		MOB CONTROLLER
 		GROUP MOBS
 		RANDOM SPAWNS @ INTERVAL	
 		GLOBAL STATS

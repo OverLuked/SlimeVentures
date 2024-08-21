@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using SlimeVentures.Scripts;
 
 public partial class SlimeBall : Sprite2D

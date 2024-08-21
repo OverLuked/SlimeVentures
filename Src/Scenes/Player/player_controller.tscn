@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bam1e1oxrjucs"]
 
-[ext_resource type="Script" path="res://Src/Scripts/Player/PlayerController.cs" id="1_l0u5p"]
-[ext_resource type="Script" path="res://Src/Scripts/Player/EventBus.cs" id="2_8vjc4"]
+[ext_resource type="Script" path="res://Src/Scripts/Player/PlayerController.cs" id="1_jhv1q"]
+[ext_resource type="Script" path="res://Src/Scripts/Player/EventBus.cs" id="2_g6ojn"]
 
 [node name="PlayerController" type="Node" node_paths=PackedStringArray("_event")]
-script = ExtResource("1_l0u5p")
+script = ExtResource("1_jhv1q")
 _event = NodePath("EventBus")
 
 [node name="EventBus" type="Node" parent="." node_paths=PackedStringArray("_controller")]
-script = ExtResource("2_8vjc4")
+script = ExtResource("2_g6ojn")
 _controller = NodePath("..")

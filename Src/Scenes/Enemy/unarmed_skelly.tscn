@@ -22,8 +22,9 @@ height = 18.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fs3k"]
 radius = 7.0
 
-[node name="UnarmedSkelly" type="CharacterBody2D"]
+[node name="UnarmedSkelly" type="CharacterBody2D" node_paths=PackedStringArray("_controller")]
 script = ExtResource("1_aslhr")
+_controller = NodePath("EnemyEventBus")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ogfiv")

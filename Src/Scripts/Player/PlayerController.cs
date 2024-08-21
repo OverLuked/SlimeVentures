@@ -38,7 +38,7 @@ public partial class PlayerController : Node
 	
 	public override void _Ready()
 	{
-		_linearBullet = GD.Load<PackedScene>("res://Src/Scenes/slime_ball.tscn");
+		_linearBullet = GD.Load<PackedScene>("res://Src/Scenes/Player/slime_ball.tscn");
 		GD.Print("Controller Ready");
 	}
 

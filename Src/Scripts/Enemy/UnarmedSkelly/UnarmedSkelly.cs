@@ -2,7 +2,7 @@ using Godot;
 
 public partial class UnarmedSkelly : CharacterBody2D
 {
-	[Export] private EnemyController _controller;
+	[Export] private EnemyEventBus _controller;
 	private const float Health = 4.0f;
 	private const float Damage = 1.0f;
 	private const float Speed = 300.0f;

@@ -14,7 +14,7 @@ public partial class PlayerStats : Node
     public static int DashCount;
     public static int MaxDash;
 
-    private CharacterBody2D _player;
+    private static CharacterBody2D _player;
 
     public static void SetStats(float health, float speed, float attackSpeed, float bulletSpeed, float damage, 
         int dashCD, int n, int maxDash)
@@ -39,7 +39,7 @@ public partial class PlayerStats : Node
         return _player;
     }
 
-    public void SetPlayer(CharacterBody2D player)
+    public static void SetPlayer(CharacterBody2D player)
     {
         _player = player;
     }

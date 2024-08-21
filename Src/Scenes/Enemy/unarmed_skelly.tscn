@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://bp70efsakdjes"]
 
-[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/UnarmedSkelly.cs" id="1_514ao"]
-[ext_resource type="Texture2D" uid="uid://fvw2825rxabe" path="res://Resources/MobSprites/UnarmedSkelly/SkellyT1DownIdle.png" id="2_4ayou"]
-[ext_resource type="PackedScene" uid="uid://bi00x5lg08y8s" path="res://Src/Scenes/Enemy/enemy_controller.tscn" id="3_mle76"]
+[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/UnarmedSkelly.cs" id="1_aslhr"]
+[ext_resource type="Texture2D" uid="uid://fvw2825rxabe" path="res://Resources/MobSprites/UnarmedSkelly/SkellyT1DownIdle.png" id="1_u5i1g"]
+[ext_resource type="PackedScene" uid="uid://bi00x5lg08y8s" path="res://Src/Scenes/Enemy/enemy_controller.tscn" id="3_ts6y4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ogfiv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4ayou")
+"texture": ExtResource("1_u5i1g")
 }],
 "loop": true,
 "name": &"default",
@@ -23,7 +23,7 @@ height = 18.0
 radius = 7.0
 
 [node name="UnarmedSkelly" type="CharacterBody2D"]
-script = ExtResource("1_514ao")
+script = ExtResource("1_aslhr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ogfiv")
@@ -37,4 +37,4 @@ position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_7fs3k")
 debug_color = Color(0.783356, 0.310855, 0.767251, 0.42)
 
-[node name="EnemyEventBus" parent="." instance=ExtResource("3_mle76")]
+[node name="EnemyEventBus" parent="." instance=ExtResource("3_ts6y4")]

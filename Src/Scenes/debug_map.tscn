@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://byi6k44jqjiih"]
 
 [ext_resource type="Texture2D" uid="uid://cr3xpersr4j6x" path="res://Resources/PlaceHolderSprites/TileMap.png" id="1_bao55"]
-[ext_resource type="PackedScene" uid="uid://d266axbe8wcg8" path="res://Src/Scenes/alexander_slime.tscn" id="2_qtgdt"]
+[ext_resource type="PackedScene" uid="uid://d266axbe8wcg8" path="res://Src/Scenes/Player/alexander_slime.tscn" id="2_qtgdt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_umpsl"]
 resource_name = "DebgMap"

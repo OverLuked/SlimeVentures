@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp70efsakdjes"]
+[gd_scene load_steps=6 format=3 uid="uid://bp70efsakdjes"]
 
+[ext_resource type="Script" path="res://Src/Scripts/Enemy/UnarmedSkelly/UnarmedSkelly.cs" id="1_aslhr"]
 [ext_resource type="Texture2D" uid="uid://fvw2825rxabe" path="res://Resources/MobSprites/UnarmedSkelly/SkellyT1DownIdle.png" id="1_u5i1g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ogfiv"]
@@ -21,6 +22,7 @@ height = 18.0
 radius = 7.0
 
 [node name="UnarmedSkelly" type="CharacterBody2D"]
+script = ExtResource("1_aslhr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ogfiv")

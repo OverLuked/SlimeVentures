@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkuhalc8fg2rn"]
-
-[ext_resource type="Texture2D" uid="uid://txpr03ga1jnq" path="res://Resources/PlaceHolderSprites/icon.svg" id="1_sdity"]
-[ext_resource type="Script" path="res://Src/Scripts/Player/Projectiles/SlimeBall.cs" id="2_wkval"]
-
-[node name="SlimeBall" type="Sprite2D"]
-scale = Vector2(0.0703125, 0.0703125)
-texture = ExtResource("1_sdity")
-script = ExtResource("2_wkval")

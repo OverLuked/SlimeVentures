@@ -4,18 +4,25 @@ using SlimeVentures.Scripts;
 
 public partial class EnemyController : Node
 {
-	public CharacterBody2D Character;
-	private CharacterBody2D _player;
-	
+	private Vector2 _targetPos;
+	private Vector2 _direction;
+
+
 	public override void _Ready()
 	{
 		GD.Print("Enemy controller ready");
-		_player = PlayerStats.GetPlayer();
 	}
+	
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void Control(CharacterBody2D entity, CharacterBody2D player)
 	{
-		Character.MoveAndSlide();
+		_targetPos = player.Position;
+		_direction = (_targetPos - entity.Position).Normalized();
+		entity.Velocity = _direction * EnemyStats.Speed;
+		
+		entity.MoveAndSlide();
 	}
+	
+	// TODO: DAMAGE LOGIC 
 }

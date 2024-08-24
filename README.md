@@ -12,6 +12,7 @@ Vampire Survivors-ish game but worse!
 		RANDOM SPAWNS @ INTERVAL	
 		GLOBAL STATS
 		MOB DROPS
+		DAMAGE LOGIC
 	*-------------/////-------------*
 	DEBUG MAP
 		PLACE SPAWNERS (FOR MOBS)

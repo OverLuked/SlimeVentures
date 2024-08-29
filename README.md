@@ -7,9 +7,9 @@ Vampire Survivors-ish game but worse!
 	*-------------/////-------------*
 	*(PRIORITY)*
 	FIRST MOB
-		GROUP MOBS
+		GROUP MOBS - > Check if working after spawn
 		RANDOM SPAWNS @ INTERVAL	
-		GLOBAL STATS
+		GLOBAL STATSaa
 		MOB DROPS
 		DAMAGE LOGIC
 	*-------------/////-------------*
@@ -23,6 +23,8 @@ Vampire Survivors-ish game but worse!
 		SET UP LEVELLING SYSTEM
 		DAMAGE COUNTERS
 		HIT / GOT HIT SIGNALS
+		DAMAGE / DAMAGED LOGIC
+		DESTROY ENTITY LOGIC
 	*-------------/////-------------*
 	
 

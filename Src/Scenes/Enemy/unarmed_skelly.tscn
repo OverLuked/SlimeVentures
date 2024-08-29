@@ -22,7 +22,7 @@ height = 18.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fs3k"]
 radius = 7.0
 
-[node name="UnarmedSkelly" type="CharacterBody2D" node_paths=PackedStringArray("_controller")]
+[node name="UnarmedSkelly" type="CharacterBody2D" node_paths=PackedStringArray("_controller") groups=["entity", "hostile-mobs"]]
 script = ExtResource("1_aslhr")
 _controller = NodePath("EnemyEventBus")
 

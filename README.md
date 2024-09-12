@@ -9,7 +9,8 @@ Vampire Survivors-ish game but worse!
 	FIRST MOB
 		GROUP MOBS - > Check if working after spawn
 		RANDOM SPAWNS @ INTERVAL	
-		GLOBAL STATSaa
+		GLOBAL STATS
+  		CONTEXT BASED STEERING
 		MOB DROPS
 		DAMAGE LOGIC
 	*-------------/////-------------*
